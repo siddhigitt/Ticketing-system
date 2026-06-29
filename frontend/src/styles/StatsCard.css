@@ -1,0 +1,47 @@
+.stats-card{
+
+    width:300px;
+
+    background:white;
+
+    border-radius:16px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    overflow:hidden;
+
+}
+
+.top-line{
+
+    height:5px;
+
+}
+
+.stats-card h3{
+
+    padding:25px 25px 0;
+
+    color:#374151;
+
+    font-size:18px;
+
+}
+
+.stats-card h1{
+
+    padding:15px 25px 5px;
+
+    font-size:42px;
+
+    color:#111827;
+
+}
+
+.stats-card p{
+
+    padding:0 25px 25px;
+
+    color:#6B7280;
+
+}

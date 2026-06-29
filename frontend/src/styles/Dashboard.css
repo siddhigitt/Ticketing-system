@@ -1,0 +1,18 @@
+.dashboard{
+    display:flex;
+    background:#F8FAFC;
+}
+
+.main-content{
+    flex:1;
+}
+
+.dashboard-content{
+    padding:35px;
+}
+
+.cards{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+}
