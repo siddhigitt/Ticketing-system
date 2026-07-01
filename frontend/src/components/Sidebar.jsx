@@ -1,40 +1,61 @@
-import { FaHome, FaTicketAlt, FaPlusCircle, FaChartBar, FaSignOutAlt } from "react-icons/fa";
+import {
+    FaHome,
+    FaTicketAlt,
+    FaPlusCircle,
+    FaChartBar,
+    FaCog,
+    FaSignOutAlt
+} from "react-icons/fa";
+
 import "../styles/Sidebar.css";
 
 function Sidebar() {
     return (
         <div className="sidebar">
 
-            <h2>Ticket Service</h2>
+            <div className="logo-section">
+                <h2>Ticket Service</h2>
+                <p>Support Portal</p>
+            </div>
 
-            <ul>
+            <hr />
 
-                <li>
+            <ul className="menu">
+
+                <li className="active">
                     <FaHome />
-                    Home
+                    <span>Home</span>
                 </li>
 
                 <li>
                     <FaTicketAlt />
-                    My Tickets
+                    <span>My Tickets</span>
                 </li>
 
                 <li>
                     <FaPlusCircle />
-                    Create Ticket
+                    <span>Create Ticket</span>
                 </li>
 
                 <li>
                     <FaChartBar />
-                    Analytics
+                    <span>Analytics</span>
                 </li>
 
                 <li>
-                    <FaSignOutAlt />
-                    Logout
+                    <FaCog />
+                    <span>Settings</span>
                 </li>
 
             </ul>
+
+            <div className="logout">
+
+                <FaSignOutAlt />
+
+                <span>Logout</span>
+
+            </div>
 
         </div>
     );

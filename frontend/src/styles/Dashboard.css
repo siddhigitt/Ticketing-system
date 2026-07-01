@@ -1,18 +1,22 @@
 .dashboard{
     display:flex;
-    background:#F8FAFC;
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 .main-content{
     flex:1;
+    overflow-x:hidden;
 }
 
 .dashboard-content{
-    padding:35px;
+    padding:30px;
 }
 
 .cards{
-    display:flex;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
     gap:25px;
-    flex-wrap:wrap;
+    margin-bottom:35px;
 }
