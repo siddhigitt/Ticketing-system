@@ -1,7 +1,32 @@
+import { useEffect, useState } from "react";
+import { getAllTickets } from "../services/ticketService";
 import "../styles/RecentTickets.css";
-import { recentTickets } from "../data/dashboardData";
 
 function RecentTickets() {
+
+    const [tickets, setTickets] = useState([]);
+
+    useEffect(() => {
+
+        loadTickets();
+
+    }, []);
+
+    const loadTickets = async () => {
+
+        try {
+
+            const data = await getAllTickets();
+
+            setTickets(data);
+
+        } catch (error) {
+
+            console.error("Failed to load tickets", error);
+
+        }
+
+    };
 
     return (
 
@@ -20,50 +45,66 @@ function RecentTickets() {
                 <thead>
 
                 <tr>
+
                     <th>ID</th>
                     <th>Title</th>
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Created</th>
+
                 </tr>
 
                 </thead>
 
                 <tbody>
 
-                {recentTickets.map((ticket) => (
+                {tickets.length === 0 ? (
 
-                    <tr key={ticket.id}>
+                    <tr>
 
-                        <td>
-                                <span className="ticket-id">
-                                    {ticket.id}
-                                </span>
-                        </td>
-
-                        <td className="ticket-title">
-                            {ticket.title}
-                        </td>
-
-                        <td>
-                                <span className={`priority ${ticket.priority.toLowerCase()}`}>
-                                    {ticket.priority}
-                                </span>
-                        </td>
-
-                        <td>
-                                <span className={`status ${ticket.status.toLowerCase().replace(" ", "-")}`}>
-                                    {ticket.status}
-                                </span>
-                        </td>
-
-                        <td className="ticket-date">
-                            {ticket.date}
+                        <td colSpan="5" className="empty-state">
+                            No tickets found.
                         </td>
 
                     </tr>
 
-                ))}
+                ) : (
+
+                    tickets.map((ticket) => (
+
+                        <tr key={ticket.id}>
+
+                            <td>
+                <span className="ticket-id">
+                    #{ticket.id}
+                </span>
+                            </td>
+
+                            <td className="ticket-title">
+                                {ticket.title}
+                            </td>
+
+                            <td>
+                <span className={`priority ${ticket.priority.toLowerCase()}`}>
+                    {ticket.priority}
+                </span>
+                            </td>
+
+                            <td>
+                <span className={`status ${ticket.status.toLowerCase().replace("_","-")}`}>
+                    {ticket.status}
+                </span>
+                            </td>
+
+                            <td className="ticket-date">
+                                {new Date(ticket.createdAt).toLocaleDateString()}
+                            </td>
+
+                        </tr>
+
+                    ))
+
+                )}
 
                 </tbody>
 

@@ -7,44 +7,86 @@ import {
     FaSignOutAlt
 } from "react-icons/fa";
 
+import { NavLink } from "react-router-dom";
+
 import "../styles/Sidebar.css";
 
 function Sidebar() {
+
     return (
+
         <div className="sidebar">
 
             <div className="logo-section">
+
                 <h2>Ticket Service</h2>
+
                 <p>Support Portal</p>
+
             </div>
 
             <hr />
 
             <ul className="menu">
 
-                <li className="active">
-                    <FaHome />
-                    <span>Home</span>
+                <li>
+
+                    <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        <FaHome />
+                        <span>Home</span>
+                    </NavLink>
+
                 </li>
 
                 <li>
-                    <FaTicketAlt />
-                    <span>My Tickets</span>
+
+                    <NavLink
+                        to="/my-tickets"
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        <FaTicketAlt />
+                        <span>My Tickets</span>
+                    </NavLink>
+
                 </li>
 
                 <li>
-                    <FaPlusCircle />
-                    <span>Create Ticket</span>
+
+                    <NavLink
+                        to="/create-ticket"
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        <FaPlusCircle />
+                        <span>Create Ticket</span>
+                    </NavLink>
+
                 </li>
 
                 <li>
-                    <FaChartBar />
-                    <span>Analytics</span>
+
+                    <NavLink
+                        to="/analytics"
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        <FaChartBar />
+                        <span>Analytics</span>
+                    </NavLink>
+
                 </li>
 
                 <li>
-                    <FaCog />
-                    <span>Settings</span>
+
+                    <NavLink
+                        to="/settings"
+                        className={({ isActive }) => isActive ? "active" : ""}
+                    >
+                        <FaCog />
+                        <span>Settings</span>
+                    </NavLink>
+
                 </li>
 
             </ul>
@@ -58,7 +100,9 @@ function Sidebar() {
             </div>
 
         </div>
+
     );
+
 }
 
 export default Sidebar;

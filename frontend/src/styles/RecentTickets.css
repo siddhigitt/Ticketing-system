@@ -5,7 +5,6 @@
     padding:28px;
     border-radius:18px;
     box-shadow:0 8px 25px rgba(0,0,0,.06);
-
     overflow-x:auto;
 
 }
@@ -32,15 +31,10 @@
     border:none;
     background:#2563EB;
     color:white;
-
     padding:10px 18px;
-
     border-radius:8px;
-
     cursor:pointer;
-
     font-weight:600;
-
     transition:all .25s ease;
 
 }
@@ -48,7 +42,6 @@
 .table-header button:hover{
 
     background:#1D4ED8;
-
     transform:translateY(-2px);
 
 }
@@ -63,19 +56,12 @@ table{
 th{
 
     text-align:left;
-
     padding:18px 16px;
-
     background:#F8FAFC;
-
     color:#64748B;
-
     font-size:13px;
-
     font-weight:700;
-
     letter-spacing:.8px;
-
     text-transform:uppercase;
 
 }
@@ -83,9 +69,7 @@ th{
 td{
 
     padding:18px 16px;
-
     border-bottom:1px solid #E2E8F0;
-
     vertical-align:middle;
 
 }
@@ -111,23 +95,13 @@ tbody tr:hover{
 .ticket-id{
 
     color:#2563EB;
-
     font-weight:600;
-
-    cursor:pointer;
-
-}
-
-.ticket-id:hover{
-
-    text-decoration:underline;
 
 }
 
 .ticket-title{
 
     font-weight:500;
-
     color:#1F2937;
 
 }
@@ -135,34 +109,18 @@ tbody tr:hover{
 .ticket-date{
 
     color:#6B7280;
-
     font-size:14px;
 
 }
 
 .priority{
 
+    display:inline-block;
     padding:6px 14px;
-
     border-radius:20px;
-
     color:white;
-
     font-size:12px;
-
     font-weight:600;
-
-}
-
-.priority.high{
-
-    background:#EF4444;
-
-}
-
-.priority.medium{
-
-    background:#F59E0B;
 
 }
 
@@ -172,16 +130,31 @@ tbody tr:hover{
 
 }
 
+.priority.medium{
+
+    background:#F59E0B;
+
+}
+
+.priority.high{
+
+    background:#EF4444;
+
+}
+
+.priority.critical{
+
+    background:#991B1B;
+
+}
+
 .status{
 
+    display:inline-block;
     padding:6px 14px;
-
     border-radius:20px;
-
     color:white;
-
     font-size:12px;
-
     font-weight:600;
 
 }
@@ -189,6 +162,12 @@ tbody tr:hover{
 .status.open{
 
     background:#2563EB;
+
+}
+
+.status.assigned{
+
+    background:#7C3AED;
 
 }
 
@@ -201,5 +180,20 @@ tbody tr:hover{
 .status.resolved{
 
     background:#22C55E;
+
+}
+
+.status.closed{
+
+    background:#6B7280;
+
+}
+
+.empty-state{
+
+    text-align:center;
+    padding:40px;
+    color:#6B7280;
+    font-size:16px;
 
 }

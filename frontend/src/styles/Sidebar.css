@@ -1,13 +1,14 @@
 .sidebar{
     width:280px;
     min-width:280px;
-    height:100vh;
+    min-height:100vh;
     background:#1E3A5F;
     color:white;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     padding:25px 18px;
+    box-sizing:border-box;
 }
 
 .logo-section h2{
@@ -30,9 +31,14 @@
 .menu{
     list-style:none;
     padding:0;
+    margin:0;
 }
 
 .menu li{
+    margin-bottom:8px;
+}
+
+.menu li a{
 
     display:flex;
     align-items:center;
@@ -42,13 +48,15 @@
 
     border-radius:12px;
 
-    cursor:pointer;
+    color:white;
+
+    text-decoration:none;
 
     transition:all .25s ease;
 
 }
 
-.menu li:hover{
+.menu li a:hover{
 
     background:rgba(255,255,255,.08);
 
@@ -56,7 +64,7 @@
 
 }
 
-.menu li.active{
+.menu li a.active{
 
     background:#2563EB;
 
