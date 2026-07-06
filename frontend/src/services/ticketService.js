@@ -17,3 +17,11 @@ export const getAllTickets = async () => {
     return response.data;
 
 };
+
+export const deleteTicket = async (id) => {
+
+    const response = await axios.delete(`${API_URL}/${id}`);
+
+    return response.data;
+
+};
