@@ -25,3 +25,13 @@ export const deleteTicket = async (id) => {
     return response.data;
 
 };
+
+export const updateTicketStatus = async (id, status) => {
+
+    const response = await axios.put(
+        `${API_URL}/${id}?status=${status}`
+    );
+
+    return response.data;
+
+};
