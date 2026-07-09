@@ -4,8 +4,9 @@ import com.ticket.ticketingsystem.entity.Ticket;
 import com.ticket.ticketingsystem.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import com.ticket.ticketingsystem.entity.User;
+import com.ticket.ticketingsystem.repository.UserRepository;
 
 @Service
 public class TicketService {
@@ -13,15 +14,23 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     // Create a new ticket
     public Ticket createTicket(Ticket ticket) {
 
         ticket.setStatus("OPEN");
 
-        // Default category if none is provided
         if (ticket.getCategory() == null || ticket.getCategory().isBlank()) {
             ticket.setCategory("OTHER");
         }
+
+        // Temporary: assign ticket to User ID = 1
+        User user = userRepository.findById(1L)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        ticket.setUser(user);
 
         return ticketRepository.save(ticket);
     }

@@ -229,6 +229,7 @@ function MyTickets() {
 
                                     <th>ID</th>
                                     <th>Title</th>
+                                    <th>User</th>
                                     <th>Category</th>
                                     <th>Priority</th>
                                     <th>Status</th>
@@ -266,6 +267,8 @@ function MyTickets() {
                                             <td>#{ticket.id}</td>
 
                                             <td>{ticket.title}</td>
+
+                                            <td>{ticket.user?.name}</td>
 
                                             <td>{ticket.category}</td>
 

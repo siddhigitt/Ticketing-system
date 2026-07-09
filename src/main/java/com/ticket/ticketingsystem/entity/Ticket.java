@@ -2,6 +2,7 @@ package com.ticket.ticketingsystem.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.ticket.ticketingsystem.entity.User;
 
 @Entity
 @Table(name = "tickets")
@@ -28,6 +29,10 @@ public class Ticket {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // Runs only when a new ticket is created
     @PrePersist
@@ -107,4 +112,13 @@ public class Ticket {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
+

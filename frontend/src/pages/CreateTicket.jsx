@@ -37,7 +37,11 @@ function CreateTicket() {
             title,
             description,
             category,
-            priority
+            priority,
+
+            user: {
+                id: 1
+            }
 
         };
 

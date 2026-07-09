@@ -48,6 +48,7 @@ function RecentTickets() {
 
                     <th>ID</th>
                     <th>Title</th>
+                    <th>User</th>
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Created</th>
@@ -84,11 +85,7 @@ function RecentTickets() {
                                 {ticket.title}
                             </td>
 
-                            <td>
-                <span className={`priority ${ticket.priority.toLowerCase()}`}>
-                    {ticket.priority}
-                </span>
-                            </td>
+                            <td>{ticket.user?.name}</td>
 
                             <td>
                 <span className={`status ${ticket.status.toLowerCase().replace("_","-")}`}>
