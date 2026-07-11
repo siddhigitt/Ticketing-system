@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import CreateTicket from "./pages/CreateTicket";
@@ -7,27 +9,54 @@ import MyTickets from "./pages/MyTickets";
 
 function App() {
 
-  return (
+    return (
 
-      <BrowserRouter>
+        <BrowserRouter>
 
-        <Routes>
+            <Routes>
 
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+                <Route
+                    path="/"
+                    element={<Navigate to="/login" />}
+                />
 
-          <Route path="/login" element={<Login />} />
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
 
-          <Route path="/dashboard" element={<Dashboard />} />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
 
-          <Route path="/create-ticket" element={<CreateTicket />} />
+                <Route
+                    path="/create-ticket"
+                    element={
+                        <ProtectedRoute>
+                            <CreateTicket />
+                        </ProtectedRoute>
+                    }
+                />
 
-          <Route path="/my-tickets" element={<MyTickets />} />
+                <Route
+                    path="/my-tickets"
+                    element={
+                        <ProtectedRoute>
+                            <MyTickets />
+                        </ProtectedRoute>
+                    }
+                />
 
-        </Routes>
+            </Routes>
 
-      </BrowserRouter>
+        </BrowserRouter>
 
-  );
+    );
 
 }
 

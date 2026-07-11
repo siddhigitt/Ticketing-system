@@ -10,9 +10,17 @@ import {
 import { NavLink } from "react-router-dom";
 
 import "../styles/Sidebar.css";
-
+import { useNavigate } from "react-router-dom";
 function Sidebar() {
+    const navigate = useNavigate();
 
+    const handleLogout = () => {
+
+        localStorage.removeItem("user");
+
+        navigate("/login");
+
+    };
     return (
 
         <div className="sidebar">
@@ -91,7 +99,7 @@ function Sidebar() {
 
             </ul>
 
-            <div className="logout">
+            <div className="logout" onClick={handleLogout}>
 
                 <FaSignOutAlt />
 
@@ -104,5 +112,6 @@ function Sidebar() {
     );
 
 }
+
 
 export default Sidebar;

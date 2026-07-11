@@ -32,6 +32,16 @@ function CreateTicket() {
 
         }
 
+        const loggedInUser = JSON.parse(localStorage.getItem("user"));
+
+        if (!loggedInUser) {
+
+            alert("Please login first.");
+
+            return;
+
+        }
+
         const ticket = {
 
             title,
@@ -40,7 +50,7 @@ function CreateTicket() {
             priority,
 
             user: {
-                id: 1
+                id: loggedInUser.id
             }
 
         };

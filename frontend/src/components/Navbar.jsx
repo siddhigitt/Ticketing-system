@@ -1,6 +1,7 @@
 import "../styles/Navbar.css";
 
 function Navbar() {
+    const user = JSON.parse(localStorage.getItem("user"));
     return (
         <div className="navbar">
 
@@ -18,12 +19,15 @@ function Navbar() {
 
                 <div className="profile">
                     <div className="profile-avatar">
-                        SR
+                        {user?.name
+                            ?.split(" ")
+                            .map((word) => word[0])
+                            .join("")}
                     </div>
 
                     <div>
-                        <h4>Siddhi Rudrakshi</h4>
-                        <p>Administrator</p>
+                        <h4>{user?.name}</h4>
+                        <p>{user?.role}</p>
                     </div>
 
                 </div>
