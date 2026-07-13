@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import { createTicket } from "../services/ticketService";
+import {createTicket,analyzeTicket} from "../services/ticketService";
 import "../styles/CreateTicket.css";
 
 function CreateTicket() {
@@ -10,13 +10,67 @@ function CreateTicket() {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("Software");
     const [priority, setPriority] = useState("Low");
+    const [aiSummary, setAiSummary] = useState("");
+    const [aiSuggestions, setAiSuggestions] = useState([]);
+    const [loadingAI, setLoadingAI] = useState(false);
 
     const handleClear = () => {
-
+        setAiSummary("");
+        setAiSuggestions([]);
         setTitle("");
         setDescription("");
         setCategory("Software");
         setPriority("Low");
+
+    };
+
+    const handleAnalyze = async () => {
+        if(loadingAI) return;
+        if (!description.trim()) {
+
+            alert("Please enter a description first.");
+
+            return;
+
+        }
+
+        try {
+
+            setLoadingAI(true);
+
+            const response = await analyzeTicket(description);
+
+            console.log(response);
+
+            // Extract AI response from Groq
+            const aiText = response.choices[0].message.content;
+
+            // Convert JSON string to JavaScript object
+            const aiData = JSON.parse(aiText);
+
+            // Auto-fill form
+            setCategory(aiData.category);
+            setPriority(aiData.priority);
+
+            // Show AI analysis
+            setAiSummary(aiData.summary);
+            setAiSuggestions(aiData.suggestions);
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            alert("AI analysis failed.");
+
+        }
+
+        finally {
+
+            setLoadingAI(false);
+
+        }
 
     };
 
@@ -177,6 +231,15 @@ function CreateTicket() {
                                 </button>
 
                                 <button
+                                    type="button"
+                                    className="secondary-btn"
+                                    onClick={handleAnalyze}
+                                    disabled={loadingAI}
+                                >
+                                    {loadingAI ? "Analyzing..." : "Analyze with AI"}
+                                </button>
+
+                                <button
                                     type="submit"
                                     className="primary-btn"
                                 >
@@ -184,6 +247,36 @@ function CreateTicket() {
                                 </button>
 
                             </div>
+                            {aiSummary && (
+
+                                <div className="ai-result">
+
+                                    <h3>AI Analysis</h3>
+
+                                    <p>{aiSummary}</p>
+
+                                </div>
+
+                            )}
+                            {aiSuggestions.length > 0 && (
+
+                                <div className="ai-result">
+
+                                    <h3>Suggested Resolution</h3>
+
+                                    <ul>
+
+                                        {aiSuggestions.map((item, index) => (
+
+                                            <li key={index}>{item}</li>
+
+                                        ))}
+
+                                    </ul>
+
+                                </div>
+
+                            )}
 
                         </form>
 

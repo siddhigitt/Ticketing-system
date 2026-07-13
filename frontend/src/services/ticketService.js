@@ -35,3 +35,16 @@ export const updateTicketStatus = async (id, status) => {
     return response.data;
 
 };
+
+export const analyzeTicket = async (description) => {
+
+    const response = await axios.post(
+        "http://localhost:8080/ai/analyze",
+        {
+            description
+        }
+    );
+
+    return response.data;
+
+};
