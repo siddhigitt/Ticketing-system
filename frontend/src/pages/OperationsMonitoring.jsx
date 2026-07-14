@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 import "../styles/OperationsReport.css";
 
 function OperationsMonitoring() {
@@ -71,103 +73,119 @@ function OperationsMonitoring() {
 
     return (
 
-        <div className="page-container">
+        <div className="dashboard">
 
-            <h1 className="page-title">
-                AI Operations Monitoring
-            </h1>
+            <Sidebar />
 
-            <p className="page-subtitle">
-                Monitor system-wide ticket activity using AI to identify operational trends, recurring issues and potential incidents.
-            </p>
+            <div className="main-content">
 
-            {/* Dashboard Statistics */}
+                <Navbar />
 
-            <div className="stats-grid">
+                <div className="operations-monitoring-page">
 
-                <div className="stat-card">
+                    <div className="page-header">
 
-                    <h3>Total Tickets</h3>
+                        <h1 className="page-title">
+                            AI Operations Monitoring
+                        </h1>
 
-                    <h2>{stats.totalTickets}</h2>
+                        <p className="page-subtitle">
+                            Monitor system-wide ticket activity using AI to identify operational trends, recurring issues and potential incidents.
+                        </p>
 
-                </div>
+                    </div>
 
-                <div className="stat-card">
+                    {/* Dashboard Statistics */}
 
-                    <h3>Open Tickets</h3>
+                    <div className="stats-grid">
 
-                    <h2>{stats.openTickets}</h2>
+                        <div className="stat-card">
 
-                </div>
+                            <h3>Total Tickets</h3>
 
-                <div className="stat-card">
+                            <h2>{stats.totalTickets}</h2>
 
-                    <h3>Critical Tickets</h3>
+                        </div>
 
-                    <h2>{stats.criticalTickets}</h2>
+                        <div className="stat-card">
 
-                </div>
+                            <h3>Open Tickets</h3>
 
-                <div className="stat-card">
+                            <h2>{stats.openTickets}</h2>
 
-                    <h3>Resolved Tickets</h3>
+                        </div>
 
-                    <h2>{stats.resolvedTickets}</h2>
+                        <div className="stat-card">
+
+                            <h3>Critical Tickets</h3>
+
+                            <h2>{stats.criticalTickets}</h2>
+
+                        </div>
+
+                        <div className="stat-card">
+
+                            <h3>Resolved Tickets</h3>
+
+                            <h2>{stats.resolvedTickets}</h2>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        className="generate-btn"
+                        onClick={generateReport}
+                    >
+                        Analyze Current System
+                    </button>
+
+                    <br />
+                    <br />
+
+                    {loading && <h3 className="loading-text">Generating Monitoring Analysis...</h3>}
+
+                    {report && (
+
+                        <div className="report-card">
+
+                            <div className="report-header">
+
+                                <div className="report-title">
+
+                                    Latest Monitoring Analysis
+
+                                </div>
+
+                                <div className="report-date">
+
+                                    Last Analysis
+
+                                    <br />
+
+                                    {generatedTime}
+
+                                </div>
+
+                            </div>
+
+                            <div className="report-content">
+
+                                <ReactMarkdown>
+
+                                    {report}
+
+                                </ReactMarkdown>
+
+                            </div>
+
+                        </div>
+
+                    )}
 
                 </div>
 
             </div>
-
-            <button
-                className="generate-btn"
-                onClick={generateReport}
-            >
-                Analyze Current System
-            </button>
-
-            <br />
-            <br />
-
-            {loading && <h3>Generating Monitoring Analysis...</h3>}
-
-            {report && (
-
-                <div className="report-card">
-
-                    <div className="report-header">
-
-                        <div className="report-title">
-
-                            Latest Monitoring Analysis
-
-                        </div>
-
-                        <div className="report-date">
-
-                            Last Analysis
-
-                            <br />
-
-                            {generatedTime}
-
-                        </div>
-
-                    </div>
-
-                    <div className="report-content">
-
-                        <ReactMarkdown>
-
-                            {report}
-
-                        </ReactMarkdown>
-
-                    </div>
-
-                </div>
-
-            )}
 
         </div>
 

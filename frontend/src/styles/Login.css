@@ -1,87 +1,130 @@
-body{
-    background:#f4f7fb;
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.12) 0%, transparent 45%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-.login-container{
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.login-container::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(99, 102, 241, 0.05) 100%);
+    border-radius: 50%;
+    top: -200px;
+    left: -200px;
+    filter: blur(80px);
+    z-index: 1;
 }
 
-.login-card{
-
-    width:420px;
-
-    background:white;
-
-    padding:40px;
-
-    border-radius:12px;
-
-    box-shadow:0px 10px 30px rgba(0,0,0,0.1);
-
-    display:flex;
-
-    flex-direction:column;
-
+.login-container::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.15) 0%, rgba(79, 70, 229, 0.02) 100%);
+    border-radius: 50%;
+    bottom: -150px;
+    right: -150px;
+    filter: blur(100px);
+    z-index: 1;
 }
 
-.login-card h1{
-
-    text-align:center;
-
-    color:#1b4f72;
-
-    margin-bottom:10px;
-
+.login-card {
+    width: 440px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 50px 40px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 100px rgba(79, 70, 229, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.login-card p{
-
-    text-align:center;
-
-    color:gray;
-
-    margin-bottom:25px;
-
+.login-card h1 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.login-card input{
-
-    margin-bottom:15px;
-
-    padding:14px;
-
-    border-radius:8px;
-
-    border:1px solid #d0d0d0;
-
-    font-size:16px;
-
+.login-card p {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+    margin-bottom: 35px;
+    font-weight: 500;
 }
 
-.login-card button{
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#1b4f72;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
+.login-card input {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.4);
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.25s ease;
 }
 
-.login-card button:hover{
+.login-card input:focus {
+    border-color: var(--primary);
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.25);
+}
 
-    background:#154360;
+.login-card input::placeholder {
+    color: #475569;
+}
 
+.login-card button {
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    transition: all 0.25s ease;
+    margin-top: 10px;
+}
+
+.login-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.45);
+    filter: brightness(1.1);
+}
+
+.login-card button:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

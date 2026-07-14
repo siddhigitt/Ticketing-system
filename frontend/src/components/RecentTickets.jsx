@@ -63,7 +63,7 @@ function RecentTickets() {
 
                     <tr>
 
-                        <td colSpan="5" className="empty-state">
+                        <td colSpan="6" className="empty-state">
                             No tickets found.
                         </td>
 
@@ -76,21 +76,27 @@ function RecentTickets() {
                         <tr key={ticket.id}>
 
                             <td>
-                <span className="ticket-id">
-                    #{ticket.id}
-                </span>
+                                <span className="ticket-id">
+                                    #{ticket.id}
+                                </span>
                             </td>
 
                             <td className="ticket-title">
                                 {ticket.title}
                             </td>
 
-                            <td>{ticket.user?.name}</td>
+                            <td>{ticket.user?.name || "Unassigned"}</td>
 
                             <td>
-                <span className={`status ${ticket.status.toLowerCase().replace("_","-")}`}>
-                    {ticket.status}
-                </span>
+                                <span className={`priority ${ticket.priority.toLowerCase()}`}>
+                                    {ticket.priority}
+                                </span>
+                            </td>
+
+                            <td>
+                                <span className={`status ${ticket.status.toLowerCase().replace("_","-")}`}>
+                                    {ticket.status}
+                                </span>
                             </td>
 
                             <td className="ticket-date">

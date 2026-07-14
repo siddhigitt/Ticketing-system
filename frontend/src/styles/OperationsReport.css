@@ -1,192 +1,218 @@
-.page-container {
-    padding: 35px;
-    background: #f4f7fb;
-    min-height: 100vh;
+.operations-monitoring-page {
+    padding: 40px;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .page-title {
-    font-size: 34px;
-    font-weight: 700;
-    color: #1f2937;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
     margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
 .page-subtitle {
-    color: #6b7280;
-    margin-bottom: 30px;
-    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 /* ==========================
-   Statistics Cards
+   Statistics Cards Grid
 ========================== */
-
 .stats-grid {
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 22px;
+    gap: 24px;
     margin-bottom: 35px;
-
 }
 
 .stat-card {
-
-    background: white;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 8px 18px rgba(0,0,0,.08);
-    transition: .3s;
-
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
-
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,.12);
-
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-premium);
 }
 
 .stat-card h3 {
-
-    color: #6b7280;
-    font-size: 15px;
-    margin-bottom: 15px;
-    font-weight: 600;
-
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .stat-card h2 {
-
     font-size: 36px;
-    color: #2563eb;
+    font-weight: 800;
+    color: var(--primary);
     margin: 0;
+    line-height: 1;
+}
 
+/* Customize colors for specific stats cards if we want, or keep cohesive */
+.stats-grid div:nth-child(2) h2 {
+    color: #2563eb;
+}
+.stats-grid div:nth-child(3) h2 {
+    color: #ec4899;
+}
+.stats-grid div:nth-child(4) h2 {
+    color: #10b981;
 }
 
 /* ==========================
    Button
 ========================== */
-
 .generate-btn {
-
-    background: #2563eb;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
     color: white;
     border: none;
-    padding: 14px 28px;
-    border-radius: 10px;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: .3s;
-
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    transition: all 0.25s ease;
 }
 
 .generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.35);
+    filter: brightness(1.1);
+}
 
-    background: #1d4ed8;
+.generate-btn:active {
+    transform: translateY(0);
+}
 
+.loading-text {
+    color: var(--text-muted);
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 /* ==========================
    Report Card
 ========================== */
-
 .report-card {
-
     margin-top: 35px;
-    background: white;
-    border-radius: 14px;
-    padding: 30px;
-    box-shadow: 0 8px 18px rgba(0,0,0,.08);
-
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 35px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn 0.4s ease-out;
 }
 
 .report-header {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--card-border);
     padding-bottom: 18px;
     margin-bottom: 25px;
-
 }
 
 .report-title {
-
-    font-size: 26px;
-    font-weight: 700;
-    color: #1f2937;
-
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
 }
 
 .report-date {
-
     text-align: right;
-    color: #6b7280;
-    font-size: 14px;
-
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
 }
 
 /* ==========================
-   Markdown
+   Markdown Content Rendering
 ========================== */
-
 .report-content {
-
-    color: #374151;
-    line-height: 1.9;
-
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 15px;
 }
 
 .report-content h1 {
-
-    font-size: 30px;
-    color: #1f2937;
-    margin-bottom: 20px;
-
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 25px 0 15px 0;
+    letter-spacing: -0.5px;
 }
 
 .report-content h2 {
-
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: #2563eb;
-    font-size: 22px;
-    border-left: 5px solid #2563eb;
+    margin: 30px 0 15px 0;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 800;
+    border-left: 4px solid var(--primary);
     padding-left: 12px;
-
+    letter-spacing: -0.3px;
 }
 
 .report-content h3 {
-
-    margin-top: 22px;
-    color: #1f2937;
-
-}
-
-.report-content ul {
-
-    margin-top: 10px;
-    padding-left: 22px;
-
-}
-
-.report-content li {
-
-    margin-bottom: 10px;
-
+    margin: 20px 0 10px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 .report-content p {
-
     margin-bottom: 16px;
+    font-weight: 500;
+}
 
+.report-content ul, 
+.report-content ol {
+    margin: 10px 0 20px 20px;
+}
+
+.report-content li {
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .report-content strong {
+    color: var(--text-main);
+    font-weight: 700;
+}
 
-    color: #111827;
-
+.report-content code {
+    background: var(--bg-secondary);
+    padding: 3px 6px;
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+    font-size: 13px;
 }
