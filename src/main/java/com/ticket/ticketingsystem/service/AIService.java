@@ -64,4 +64,73 @@ Ticket:
 
         return response.getBody();
     }
+    public String generateOperationsReport(String ticketsData) {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
+
+        String prompt = """
+You are the AI Operations Manager of an enterprise IT Service Desk.
+
+Analyze all the support tickets below.
+
+Generate a professional operations monitoring report.
+
+Include these sections:
+
+# Operations Monitoring Report
+
+## Executive Summary
+
+## Current Ticket Statistics
+
+## Major Issues
+
+## Recurring Problems
+
+## Potential Incident Detection
+
+## Business Impact
+
+## Operational Risks
+
+## Recommended Actions
+
+Requirements:
+- Use Markdown formatting.
+- Use bullet points where appropriate.
+- Base the report only on the provided tickets.
+- If several tickets describe similar issues, identify them as a possible infrastructure incident.
+- If many high-priority tickets remain unresolved, highlight the operational risk.
+- Do NOT return JSON.
+- Write professionally as if this report will be presented to an IT Operations Manager.
+
+Tickets:
+
+""" + ticketsData;
+
+        Map<String, Object> body = Map.of(
+                "model", model,
+                "messages", List.of(
+                        Map.of("role", "user", "content", prompt)
+                ),
+                "temperature", 0.2
+        );
+
+        HttpEntity<Map<String, Object>> entity =
+                new HttpEntity<>(body, headers);
+
+        ResponseEntity<String> response =
+                restTemplate.exchange(
+                        apiUrl,
+                        HttpMethod.POST,
+                        entity,
+                        String.class
+                );
+
+        return response.getBody();
+
+    }
 }

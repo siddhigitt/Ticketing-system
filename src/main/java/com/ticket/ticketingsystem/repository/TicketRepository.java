@@ -9,6 +9,10 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
+    long countByStatus(String status);
+
+    long countByPriority(String priority);
+
     // Find all tickets with a given status
     List<Ticket> findByStatus(String status);
 

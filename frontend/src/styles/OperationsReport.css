@@ -1,0 +1,192 @@
+.page-container {
+    padding: 35px;
+    background: #f4f7fb;
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* ==========================
+   Statistics Cards
+========================== */
+
+.stats-grid {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    margin-bottom: 35px;
+
+}
+
+.stat-card {
+
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+    transition: .3s;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.12);
+
+}
+
+.stat-card h3 {
+
+    color: #6b7280;
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+
+}
+
+.stat-card h2 {
+
+    font-size: 36px;
+    color: #2563eb;
+    margin: 0;
+
+}
+
+/* ==========================
+   Button
+========================== */
+
+.generate-btn {
+
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: .3s;
+
+}
+
+.generate-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+/* ==========================
+   Report Card
+========================== */
+
+.report-card {
+
+    margin-top: 35px;
+    background: white;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+
+}
+
+.report-header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+
+}
+
+.report-title {
+
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f2937;
+
+}
+
+.report-date {
+
+    text-align: right;
+    color: #6b7280;
+    font-size: 14px;
+
+}
+
+/* ==========================
+   Markdown
+========================== */
+
+.report-content {
+
+    color: #374151;
+    line-height: 1.9;
+
+}
+
+.report-content h1 {
+
+    font-size: 30px;
+    color: #1f2937;
+    margin-bottom: 20px;
+
+}
+
+.report-content h2 {
+
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #2563eb;
+    font-size: 22px;
+    border-left: 5px solid #2563eb;
+    padding-left: 12px;
+
+}
+
+.report-content h3 {
+
+    margin-top: 22px;
+    color: #1f2937;
+
+}
+
+.report-content ul {
+
+    margin-top: 10px;
+    padding-left: 22px;
+
+}
+
+.report-content li {
+
+    margin-bottom: 10px;
+
+}
+
+.report-content p {
+
+    margin-bottom: 16px;
+
+}
+
+.report-content strong {
+
+    color: #111827;
+
+}

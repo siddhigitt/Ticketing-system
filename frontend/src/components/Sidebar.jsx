@@ -4,13 +4,15 @@ import {
     FaPlusCircle,
     FaChartBar,
     FaCog,
-    FaSignOutAlt
+    FaSignOutAlt,
+    FaRobot
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
 
 import "../styles/Sidebar.css";
 import { useNavigate } from "react-router-dom";
+
 function Sidebar() {
     const navigate = useNavigate();
 
@@ -76,11 +78,11 @@ function Sidebar() {
                 <li>
 
                     <NavLink
-                        to="/analytics"
+                        to="/operations-report"
                         className={({ isActive }) => isActive ? "active" : ""}
                     >
-                        <FaChartBar />
-                        <span>Analytics</span>
+                        <FaRobot />
+                        <span>AI Monitoring</span>
                     </NavLink>
 
                 </li>

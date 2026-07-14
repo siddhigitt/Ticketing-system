@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import ProtectedRoute from "./components/ProtectedRoute";
-
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import CreateTicket from "./pages/CreateTicket";
 import MyTickets from "./pages/MyTickets";
+import OperationsMonitoring from "./pages/OperationsMonitoring.jsx";
 
 function App() {
 
@@ -30,6 +29,15 @@ function App() {
                     element={
                         <ProtectedRoute>
                             <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/operations-report"
+                    element={
+                        <ProtectedRoute>
+                            <OperationsMonitoring />
                         </ProtectedRoute>
                     }
                 />
